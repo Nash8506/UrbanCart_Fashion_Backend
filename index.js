@@ -12,4 +12,10 @@ app.get("/", (req, res) => {
     return res.status(200).send({message: "welcome to e-commerce api - node", status: true})
 })
 
+const authRouters = require("./routes/auth.route");
+app.use("/auth", authRouters);
+
+const userRouters = require("./routes/user.route");
+app.use("/users", userRouters);
+
 module.exports = app;
