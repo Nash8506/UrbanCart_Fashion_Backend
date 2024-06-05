@@ -21,6 +21,7 @@ const userSchema= new mongoose.Schema({
     type: String,
     required: true,
     default: "CUSTOMER",
+    enum: ["CUSTOMER", "SELLER"],
 },
 mobile: {
     type: String,
@@ -47,5 +48,5 @@ reviews: [{
 },
 });
 
-const User = mongoose.model("users", userSchema);
-module.exports = User
+const User = mongoose.model("User", userSchema);
+module.exports = User;
