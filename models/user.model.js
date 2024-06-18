@@ -23,30 +23,30 @@ const userSchema= new mongoose.Schema({
     default: "CUSTOMER",
     enum: ["CUSTOMER", "SELLER"],
 },
-mobile: {
+    mobile: {
     type: String,
 },
-address: [{
+    address: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "addresses"
 }],
-paymentInformation: [{
+    paymentInformation: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "payment_information"
 }],
-ratings: [{
+    ratings: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "ratings"
 }],
-reviews: [{
+    reviews: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "reviews"
 }],
- createdAt: {
+    createdAt: {
     type: Date,
     default: Date.now()
 },
 });
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const User = mongoose.model("users", userSchema);
+module.exports = User

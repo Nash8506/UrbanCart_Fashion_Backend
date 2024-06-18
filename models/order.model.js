@@ -1,68 +1,70 @@
 const mongoose = require("mongoose");
 
-const orderSchema= new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
-        required: true
+const orderSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+    required: true,
+  },
+  orderItems: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "orderItems",
     },
-    orderItems: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "orderItems",
-    }],
-    orderDate: {
-        type: Date,
-        required: true,
-        default: Date.now()
+  ],
+  orderDate: {
+    type: Date,
+    required: true,
+    default: Date.now(),
+  },
+  deliveryDate: {
+    type: Date,
+  },
+  shippingAddress: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "addresses",
+  },
+  paymentDetails: {
+    paymentMethod: {
+      type: String,
     },
-    deliveryDate: {
-        type: Date
+    transactionId: {
+      type: String,
     },
-    shippingAddress: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "addresses",
+    paymentId: {
+      type: String,
     },
-    paymentDetails: {
-        paymentMethod: {
-            type: String,
-        },
-        transactionId: {
-            type: String
-        },
-        paymentId: {
-            type: String
-        },
-        paymentStatus: {
-            type: String,
-            default: "pending"
-        }
+    paymentStatus: {
+      type: String,
+      default: "PENDING",
     },
-    totalPrice: {
-        type: Number,
-        required: true
-    },
-    totalDiscountedPrice: {
-        type: Number,
-        required: true
-    },
-    discount: {
-        type: Number,
-        required: true
-    },
-    orderStatus: {
-        type: String,
-        required: true,
-        default: "pending"
-    },
-    totalItem: {
-        type: Number,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    },
-})
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+  totalDiscountedPrice: {
+    type: Number,
+    required: true,
+  },
+  discount: {
+    type: Number,
+    required: true,
+  },
+  orderStatus: {
+    type: String,
+    required: true,
+    default: "pending",
+  },
+  totalItem: {
+    type: Number,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
 
 const Order = mongoose.model("orders", orderSchema);
-module.exports = Order
+module.exports = Order;

@@ -29,7 +29,7 @@ const AddressSchema= new mongoose.Schema({
         type: String,
         required: true,
     },
-    zipcode: {
+    zipCode: {
         type: Number,
         required: true,
     },
@@ -37,12 +37,12 @@ const AddressSchema= new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "users"
     }   
-    mobile: {
-        type: String,
+        mobile: {
+            type: String,
         required: true,
     },
 });
 
-const Address = mongoose.model("address", AddressSchema);
+const Address = mongoose.model("addresses", AddressSchema);
 
 module.exports = Address;   
