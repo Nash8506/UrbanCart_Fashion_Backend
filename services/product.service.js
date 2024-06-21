@@ -61,11 +61,11 @@ async function deleteProduct(productId){
     return "Product deleted successfully"
 }  
 
-async updateProduct(productId,reqData){
+async function updateProduct(productId,reqData){
     return await Product.findByIdAndUpdate(productId,reqData)
 }
 
-async findProductById(id){
+async function findProductById(id){
     const product=await Product.findById(id).populate("category").exec()
     if(!product){
         throw new Error("Product not found with id: ", id)

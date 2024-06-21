@@ -5,7 +5,7 @@ async function createReview(reqData, user) {
     const product = await productService.findProductById(reqData.productId)
 
     const review = new Review({
-        user: user._id
+        user: user._id,
         review: reqData.review,
         product: product._id,
         createdAt: new Date()
